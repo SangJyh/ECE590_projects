@@ -49,55 +49,58 @@ or additionally specify i and j.
 """
 def QuickSort(listToSort, i=0, j=None):
     # Set default value for j if None. 
+    #print(listToSort)
     if j == None:
         j = len(listToSort)
-    pvalue = listToSort[j]
-    idx = i-1
-    for 
-    
-    
-    #if i == j:#base case
-    #    return listToSort    
-    #print(listToSort)
-#    if len(listToSort)<=2:#base case for under 2 elements
-#        if listToSort[i] > listToSort[j]:
-#            a = listToSort[i]
-#            listToSort[i] = listToSort[j]
-#            listToSort[j] = a
-#        return listToSort
-    
-
-    
-    #update p index
-
-        QuickSort(listToSort[:p])# merge commands after partition
-        QuickSort(listToSort[p:])
-    
-
-    
-    #if len(listToSort)<=3:#base case for under 3 elements
-    #    if listToSort[i] > listToSort[p]:
-    #        a = listToSort[i]
-    #        listToSort[i] = listToSort[p]
-    #        listToSort[p] = a
-    #    if listToSort[j] < listToSort[i]:
-    #        a = listToSort[j]
-    #        listToSort[j] = listToSort[i]
-    #        listToSort[i] = a
-    #    if listToSort[j] < listToSort[p]:
-    #        a = listToSort[j]
-    #        listToSort[j] = listToSort[p]
-    #        listToSort[p] = a
-    #    return listToSort
-    
     #partition
-    ##p_value = listToSort[p]#get compare value
-    ##for idx in range(len(listToSort)):
-    ##    if listToSort[idx]>p_value:
-    ##        listToSort[p] = listToSort[idx]
-    #p = 0
-    
+    if i < j:
+        a = i#move from left
+        r = i#move from left
+        b = (j-1)#move from right
+        pivot = listToSort[b] # initial pivot value
+        #timer = 0
+        while a <= b:
+            #timer+=1
+            if listToSort[a] < pivot:#if element a < pivot we are good and we swap a and r
+                listToSort[r], listToSort[a] = listToSort[a], listToSort[r]#swap r and a
+                a+=1
+                r+=1
+                
+            elif listToSort[a] > pivot:
+                listToSort[a], listToSort[b] = listToSort[b], listToSort[a]#swap a and b
+                b-=1
+            elif listToSort[a] == pivot: # a = pivot a move right
+                a+=1
+                
+            #if timer >100:
+            #    print("run-out-of-time")
+            #    break
+       
+        QuickSort(listToSort,i = i, j = r)# merge commands after partition
+        QuickSort(listToSort,i = a, j = j)
+#testingSuite(QuickSort)                
         
+#def QuickSort(listToSort, i=0, j=None):
+    # Set default value for j if None. 
+    #print(listToSort)
+#    if j == None:
+#        j = len(listToSort)
+    #partition
+#    if i < j:
+#        pivot = listToSort[j-1]#set pivot
+#        low = []
+#        high = []
+#        for r in range(i,j):
+#            if listToSort[r] < pivot:
+#                low.append(listToSort[r])
+#            if listToSort[r] >= pivot:
+#                high.append(listToSort[r])
+#        QuickSort(low)# merge commands after partition
+#        QuickSort(high)
+#        low.append(high)
+#        listToSort = low.copy()
+
+
 """
 Importing the testing code after function defs to ensure same references.
 """
@@ -114,15 +117,15 @@ if __name__ == "__main__":
 #    print('Testing Insertion Sort')
 #    print()
 #    testingSuite(InsertionSort)
-#    print()
-#    print('Testing Bubble Sort')
-#    print()
-#    testingSuite(BubbleSort)
-#    print()
+    print()
+    print('Testing Bubble Sort')
+    print()
+    testingSuite(BubbleSort)
+    print()
 #    print('Testing Merge Sort')
 #    print(),
 #    testingSuite(MergeSort)
-#    print()
+    print()
     print('Testing Quick Sort')
     print()
     testingSuite(QuickSort)
@@ -130,36 +133,3 @@ if __name__ == "__main__":
 #    print('DEFAULT measureTime')
 #    print()
     measureTime()
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-#        else:
-#        p = (i+j)//2
-#        high = []
-#        low = []
-#        pvalue = listToSort[p]
-#        print(listToSort)
-#        print(pvalue)
-#        for idx in range(i, j):
-#            if listToSort[idx] <= pvalue:
-#                low.append(listToSort[idx])
-#            else:
-#                high.append(listToSort[idx])
-#        p = len(low)
-#        print(p)
-#        print(low)
-#        print(high)
-#        print("end")
-#        listToSort[:p] = low
-#        listToSort[p:] = high
