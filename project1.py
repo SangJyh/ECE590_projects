@@ -41,14 +41,13 @@ def InsertionSort(listToSort):
 BubbleSort
 """
 def BubbleSort(listToSort):
-    a = "no_sort"
+    a = "no_sort"#an indicator to tell me if there's sort action in this recursion
     for i in range(len(listToSort)-1):
         if listToSort[i]>listToSort[i+1]:
-            a = listToSort[i]
-            listToSort[i] = listToSort[i+1]
-            listToSort[i+1] = a
-    if a == "no_sort":
-        return listToSort
+            listToSort[i], listToSort[i+1] = listToSort[i+1], listToSort[i]
+            a = "sort"#if swap then we need to pass to next recursion
+    if a == "no_sort":#
+        return listToSort#if there's no swap, then we finish sorting
     else: 
         BubbleSort(listToSort)
 
@@ -124,34 +123,9 @@ def QuickSort(listToSort, i=0, j=None):
                 b-=1
             elif listToSort[a] == pivot: # a = pivot a move right
                 a+=1
-                
-            #if timer >100:
-            #    print("run-out-of-time")
-            #    break
        
         QuickSort(listToSort,i = i, j = r)# merge commands after partition
         QuickSort(listToSort,i = a, j = j)
-#testingSuite(QuickSort)                
-        
-#def QuickSort(listToSort, i=0, j=None):
-    # Set default value for j if None. 
-    #print(listToSort)
-#    if j == None:
-#        j = len(listToSort)
-    #partition
-#    if i < j:
-#        pivot = listToSort[j-1]#set pivot
-#        low = []
-#        high = []
-#        for r in range(i,j):
-#            if listToSort[r] < pivot:
-#                low.append(listToSort[r])
-#            if listToSort[r] >= pivot:
-#                high.append(listToSort[r])
-#        QuickSort(low)# merge commands after partition
-#        QuickSort(high)
-#        low.append(high)
-#        listToSort = low.copy()
 
 
 """
@@ -163,26 +137,26 @@ from project1tests import *
 Main function.
 """
 if __name__ == "__main__":
-#    print('Testing Selection Sort')
-#    print()
-#    testingSuite(SelectionSort)
-#    print()
-#    print('Testing Insertion Sort')
-#    print()
-#    testingSuite(InsertionSort)
+    print('Testing Selection Sort')
+    print()
+    testingSuite(SelectionSort)
+    print()
+    print('Testing Insertion Sort')
+    print()
+    testingSuite(InsertionSort)
     print()
     print('Testing Bubble Sort')
     print()
     testingSuite(BubbleSort)
     print()
-#    print('Testing Merge Sort')
-#    print(),
-#    testingSuite(MergeSort)
+    print('Testing Merge Sort')
+    print(),
+    testingSuite(MergeSort)
     print()
     print('Testing Quick Sort')
     print()
     testingSuite(QuickSort)
     print()
-#    print('DEFAULT measureTime')
-#    print()
+    print('DEFAULT measureTime')
+    print()
     measureTime()
