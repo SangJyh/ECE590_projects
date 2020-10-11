@@ -28,6 +28,7 @@ def bdfs(maze, alg):
     # If the alg is not BFS or DFS, raise exception.
     if (alg != 'BFS') and (alg != 'DFS'):
         raise Exception('Incorrect alg! Need BFS or DFS!')
+    ##### Your implementation goes here. #####
     elif alg == 'BFS':
         route = Queue() #create an empty queue object to process maze
         pass
@@ -35,7 +36,18 @@ def bdfs(maze, alg):
         route = Stack() #use stack object to process maze
         #initialize the route with a list of 3 "None" elements
         pass
-    ##### Your implementation goes here. #####
+    
+    
+        #initialize the maze
+    #print("initialize all vertex in the adjList")
+    #print(maze.adjList)
+    for vertex in maze.adjList:
+        vertex.visited = False
+        vertex.prev = None
+        vertex.dist = math.inf
+    maze.path = []
+
+    
     #implementing BFS/DFS
     maze.start.visited = True# set as visited
     maze.start.dist = 0
@@ -58,8 +70,8 @@ def bdfs(maze, alg):
         #print("end of this position", current)
         #print(" ")
     #
-    print("Now checking the path")
-    dist = maze.exit.dist
+    #print("Now checking the path")
+    #dist = maze.exit.dist
     backward = maze.exit
     maze.path = [backward.rank] + maze.path
     while backward.dist !=0:
@@ -72,7 +84,9 @@ def bdfs(maze, alg):
         #print(backward.visited)
         #print(backward.prev)
         #print(" ")
+        
 
+        
     return maze.path
     ##### Your implementation goes here. #####
 
