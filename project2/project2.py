@@ -43,8 +43,8 @@ def bdfs(maze, alg):
     
     while route.isEmpty() is False:
         current = route.pop()
-        print(current)
-        print(current.neigh)
+        #print("current position",current)
+        #print("neighbor for current",current.neigh)
         for neigh in current.neigh:
             if neigh.visited is False:
                 if route.isFull():
@@ -52,24 +52,28 @@ def bdfs(maze, alg):
                 neigh.visited = True
                 neigh.dist = current.dist +1
                 route.push(neigh)
-                route.prev = current
+                neigh.prev = current
+                #print("rank of neighbor",neigh.rank)
+                #print("previous rank of this neighbor",neigh.prev)
+        #print("end of this position", current)
+        #print(" ")
     #
     print("Now checking the path")
     dist = maze.exit.dist
     backward = maze.exit
-    maze.path = [backward] + maze.path
+    maze.path = [backward.rank] + maze.path
     while backward.dist !=0:
-        print(backward.rank)
-        print(backward.neigh)
-        print(backward.dist)
-        print(backward.visited)
-        print(backward.prev)
-        print(" ")
-        maze.path = [backward.prev]+maze.path
+        maze.path = [backward.prev.rank]+maze.path#only put rank number to the list of our path
         backward = backward.prev
-        
-        
-        
+        #print(maze.path)
+        #print(backward.rank)
+        #print(backward.neigh)
+        #print(backward.dist)
+        #print(backward.visited)
+        #print(backward.prev)
+        #print(" ")
+
+    return maze.path
     ##### Your implementation goes here. #####
 
 """
