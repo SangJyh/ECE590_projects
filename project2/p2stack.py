@@ -87,7 +87,8 @@ class Stack:
     pop function to pop the value off the top of the stack.
     """
     def pop(self):
+        val = self.stack[self.top]
         self.stack[self.top] = None
         self.top -= 1
         self.numElems -= 1
-        return
+        return val
