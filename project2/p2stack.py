@@ -48,7 +48,7 @@ class Stack:
     """
     def isFull(self):
         if None not in self.stack:
-            Stack.resize(self)
+            return True
         else:
             return False
 
@@ -77,9 +77,9 @@ class Stack:
     push function to push a value onto the stack.
     """
     def push(self, val):
-        Stack.isFull(self)
-        self.stack[self.top] = val
+        #Stack.isFull(self)
         self.top += 1
+        self.stack[self.top] = val
         self.numElems += 1
         return
 
