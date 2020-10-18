@@ -47,7 +47,9 @@ class Stack:
     isFull function to check if the stack is full.
     """
     def isFull(self):
+        # if stack is full -> return True
         if None not in self.stack:
+            # check if there is None
             return True
         else:
             return False
@@ -58,7 +60,9 @@ class Stack:
     isEmpty function to check if the stack is empty.
     """
     def isEmpty(self):
+        # if stack is empty -> return True
         size = len(self.stack)
+        # check if array is fully filled with Nones
         if self.stack == [None for x in range(0,size)]:
             return True
         else:
@@ -69,7 +73,9 @@ class Stack:
     resize function to resize the stack by doubling its size.
     """
     def resize(self):
+        # resize if stack is full
         size = len(self.stack)
+        # make double size stack
         self.stack = self.stack + [None for x in range(0,size)]
         return
 
@@ -77,7 +83,7 @@ class Stack:
     push function to push a value onto the stack.
     """
     def push(self, val):
-        #Stack.isFull(self)
+        # push to end of stack
         self.top += 1
         self.stack[self.top] = val
         self.numElems += 1
@@ -87,6 +93,7 @@ class Stack:
     pop function to pop the value off the top of the stack.
     """
     def pop(self):
+        # pop end of stack
         val = self.stack[self.top]
         self.stack[self.top] = None
         self.top -= 1
