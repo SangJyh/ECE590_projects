@@ -75,7 +75,7 @@ class Queue:
         size = len(self.queue)
         newqueue = self.queue + [None for x in range(0,size)]# doubling size
         
-        #implement code to reset the queue
+        #implement code to reset index of the queue
         k =0
         for i in self.queue:
             if i is not None:
