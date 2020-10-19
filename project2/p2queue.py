@@ -5,9 +5,9 @@ Fall 2020
 
 p2queue.py
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Roderick Whang (rjw34)
+Partner 2: Sang-Jyh Lin (sl605)
+Date: 10/19/2020
 """
 
 """
@@ -74,7 +74,7 @@ class Queue:
         # double queue size
         size = len(self.queue)
         newqueue = self.queue + [None for x in range(0,size)]# doubling size
-        
+
         #implement code to reset index of the queue
         k =0
         for i in self.queue:

@@ -5,9 +5,9 @@ Fall 2020
 
 project2.py
 
-Partner 1: Sang-Jyh Lin (sl605)
-Partner 2:
-Date:
+Partner 1: Roderick Whang (rjw34)
+Partner 2: Sang-Jyh Lin (sl605)
+Date: 10/19/2020
 """
 
 # Import math and other p2 files.
@@ -51,14 +51,11 @@ def bdfs(maze, alg):
     #implementing BFS/DFS
     maze.start.visited = True# set as visited
     maze.start.dist = 0
-<<<<<<< HEAD
-    route.push(maze.start) #push start to queue/stack
-    
-    #visit every possible vertices
-=======
-    route.push(maze.start) #push start to queue
 
->>>>>>> 29d7da8c80b5b8261c59b5a2b854c2652439fd9b
+    route.push(maze.start) #push start to queue/stack
+
+    #visit every possible vertices
+
     while route.isEmpty() is False:
         current = route.pop()
         #print("current position",current)
@@ -75,10 +72,10 @@ def bdfs(maze, alg):
                 #print("previous rank of this neighbor",neigh.prev)
         #print("end of this position", current)
         #print(" ")
-    #
+
     #print("Now checking the path")
     #dist = maze.exit.dist
-    
+
     #perform backward selection to find the start -> exit path!
     backward = maze.exit
     maze.path = [backward.rank] + maze.path
@@ -93,12 +90,7 @@ def bdfs(maze, alg):
         #print(backward.prev)
         #print(" ")
 
-<<<<<<< HEAD
-    #print(maze.path)#check if shortest path when using BFS
-=======
 
-
->>>>>>> 29d7da8c80b5b8261c59b5a2b854c2652439fd9b
     return maze.path
     ##### Your implementation goes here. #####
 

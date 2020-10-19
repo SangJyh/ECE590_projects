@@ -5,9 +5,9 @@ Fall 2020
 
 p2stack.py
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Roderick Whang (rjw34)
+Partner 2: Sang-Jyh Lin (sl605)
+Date: 10/19/2020
 """
 
 """
