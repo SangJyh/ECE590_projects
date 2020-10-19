@@ -36,8 +36,8 @@ def bdfs(maze, alg):
         route = Stack() #use stack object to process maze
         #initialize the route with a list of 3 "None" elements
         pass
-    
-    
+
+
         #initialize the maze
     #print("initialize all vertex in the adjList")
     #print(maze.adjList)
@@ -47,13 +47,18 @@ def bdfs(maze, alg):
         vertex.dist = math.inf
     maze.path = []
 
-    
+
     #implementing BFS/DFS
     maze.start.visited = True# set as visited
     maze.start.dist = 0
+<<<<<<< HEAD
     route.push(maze.start) #push start to queue/stack
     
     #visit every possible vertices
+=======
+    route.push(maze.start) #push start to queue
+
+>>>>>>> 29d7da8c80b5b8261c59b5a2b854c2652439fd9b
     while route.isEmpty() is False:
         current = route.pop()
         #print("current position",current)
@@ -87,9 +92,13 @@ def bdfs(maze, alg):
         #print(backward.visited)
         #print(backward.prev)
         #print(" ")
-        
 
+<<<<<<< HEAD
     #print(maze.path)#check if shortest path when using BFS
+=======
+
+
+>>>>>>> 29d7da8c80b5b8261c59b5a2b854c2652439fd9b
     return maze.path
     ##### Your implementation goes here. #####
 

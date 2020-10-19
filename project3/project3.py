@@ -19,9 +19,12 @@ detectArbitrage
 """
 def detectArbitrage(adjList, adjMat, tol=1e-15):
     ##### Your implementation goes here. #####
+<<<<<<< HEAD
     #bellmondford here
     
     
+=======
+>>>>>>> 29d7da8c80b5b8261c59b5a2b854c2652439fd9b
     return []
     ##### Your implementation goes here. #####
 
