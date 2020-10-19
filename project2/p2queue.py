@@ -72,8 +72,10 @@ class Queue:
     def resize(self):
         ##### IMPLEMENT! #####
         # double queue size
-        oldsize = len(self.queue)
-        newqueue = [None for x in range(0,2*oldsize)]
+        size = len(self.queue)
+        newqueue = self.queue + [None for x in range(0,size)]# doubling size
+        
+        #implement code to reset the queue
         k =0
         for i in self.queue:
             if i is not None:
