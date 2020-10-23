@@ -32,27 +32,41 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
                     neighbor.dist = vertex.dist + adjMat[vertex.rank][neighbor.rank]
                     neighbor.prev = vertex
     
-    
+    #Arbitrage detecting (run the v-th loop)
     for vertex in adjList:#for every vertex
         for neighbor in vertex.neigh:#loop through all neighbor for this vertex
             if vertex.dist + adjMat[vertex.rank][neighbor.rank] + tol < neighbor.dist: #if we have new update
                 neighbor.dist = vertex.dist + adjMat[vertex.rank][neighbor.rank]
                 neighbor.prev = vertex
                 #print(neighbor)
-                negcyc = [neighbor] #save start vertex
-    
+                negcyc = neighbor #save start vertex
+    # new approach to construct neg cycle
     if negcyc:#if there's negative cycle
         #searching backward to find the cycle
-        #i = 0
-        while (negcyc[0].prev.rank != negcyc[-1].rank):
-            negcyc = [negcyc[0].prev] + negcyc
-            #i+=1
-        negcyc = [negcyc[-1]] + negcyc
-        negCyc = negcyc.copy()
-        for i in range(len(negcyc)):
-            negCyc[i] = negcyc[i].rank
+        backward = negcyc
+        negCyc = [negcyc.rank]
+        while (backward.prev.dist != negcyc.dist):
+            negCyc = [backward.prev.rank] + negCyc
+            backward = backward.prev
+
+        negCyc = [negCyc[-1]] + negCyc
         return negCyc
     else: return []
+
+    
+    ### original approach    
+#    if negcyc:#if there's negative cycle
+#        #searching backward to find the cycle
+#        #i = 0
+#        while (negcyc[0].prev.rank != negcyc[-1].rank):
+#            negcyc = [negcyc[0].prev] + negcyc
+#            #i+=1
+#        negcyc = [negcyc[-1]] + negcyc
+#        negCyc = negcyc.copy()
+#        for i in range(len(negcyc)):
+#            negCyc[i] = negcyc[i].rank
+#        return negCyc
+#    else: return []
     ##### Your implementation goes here. #####
 
 ################################################################################
