@@ -1,3 +1,4 @@
+
 """
 Math 560
 Project 3
@@ -31,8 +32,8 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
                 if vertex.dist + adjMat[vertex.rank][neighbor.rank] + tol < neighbor.dist: #vertex's cost + edge cost < neighbor's current cost -> update neighbor's "cost and prev"
                     neighbor.dist = vertex.dist + adjMat[vertex.rank][neighbor.rank]
                     neighbor.prev = vertex
-    
-    
+
+
     for vertex in adjList:#for every vertex
         for neighbor in vertex.neigh:#loop through all neighbor for this vertex
             if vertex.dist + adjMat[vertex.rank][neighbor.rank] + tol < neighbor.dist: #if we have new update
@@ -40,7 +41,7 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
                 neighbor.prev = vertex
                 #print(neighbor)
                 negcyc = [neighbor] #save start vertex
-    
+
     if negcyc:#if there's negative cycle
         #searching backward to find the cycle
         #i = 0
@@ -49,8 +50,8 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
             #i+=1
         negcyc = [negcyc[-1]] + negcyc
         negCyc = negcyc.copy()
-        for i in range(len(negcyc)):
-            negCyc[i] = negcyc[i].rank
+        for i in range(len(negCyc)):
+            negCyc[i] = negCyc[i].rank
         return negCyc
     else: return []
     ##### Your implementation goes here. #####
