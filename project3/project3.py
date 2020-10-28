@@ -3,9 +3,9 @@ Math 560
 Project 3
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1:Sang-Jyh Lin (sl605)
+Partner 2:Roderick Whang (rjw34)
+Date:10/28/2020
 """
 
 # Import math and p3tests.
@@ -53,20 +53,6 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
         return negCyc
     else: return []
 
-    
-    ### original approach    
-#    if negcyc:#if there's negative cycle
-#        #searching backward to find the cycle
-#        #i = 0
-#        while (negcyc[0].prev.rank != negcyc[-1].rank):
-#            negcyc = [negcyc[0].prev] + negcyc
-#            #i+=1
-#        negcyc = [negcyc[-1]] + negcyc
-#        negCyc = negcyc.copy()
-#        for i in range(len(negcyc)):
-#            negCyc[i] = negcyc[i].rank
-#        return negCyc
-#    else: return []
     ##### Your implementation goes here. #####
 
 ################################################################################
