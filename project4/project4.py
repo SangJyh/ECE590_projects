@@ -3,9 +3,9 @@ Math 560
 Project 4
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1:Sang-Jyh Lin (sl605)
+Partner 2:Roderick Whang (rjw34)
+Date: 11/05/2020
 """
 
 # Import p4tests.
@@ -19,6 +19,7 @@ ED: the edit distance function
 def ED(src, dest):
     n = len(src)
     m = len(dest)
+
     table = [[999999 for i in range(m+1)] for j in range(n+1)] 
        
     for i in range (n+1):#first to fill the dynamic table
@@ -27,9 +28,9 @@ def ED(src, dest):
             if i ==0:
                 table[i][j] = j#0#
             elif j == 0:
-                table[i][j] =i# initialization done
-                
-            elif i!=0 and j!=0 and src[i-1]==dest[j-1]:#match
+                table[i][j] =i # initialization done
+
+            elif i!=0 and j!=0 and src[i-1]==dest[j-1]: # match
                 insert = table[i][j-1]+1
                 match = table[i-1][j-1]
                 delete = table[i-1][j]+1
@@ -38,14 +39,18 @@ def ED(src, dest):
                 insert = table[i][j-1]+1
                 sub = table[i-1][j-1]+1
                 delete = table[i-1][j]+1
-                table[i][j] = min(insert,sub, delete)
+                table[i][j] = min(insert,sub, delete) # decides insert, sub, delete
+
+    dist = table[i][j] # optimal edit number is at (n,m)
 
     ###### trace back to find each edit ######
     edits = [] # This is a placeholder, remove and implement!
-        
+
+
+
     while i>0  and j >0:
         #print(edits)
-        sub = table[i-1][j-1]#can also be a "match" need further check
+        sub = table[i-1][j-1] #can be also a "match" need further check
         insert = table[i][j-1]
         delete = table[i-1][j]
         mini = min(insert,sub, delete)
@@ -74,7 +79,7 @@ def ED(src, dest):
     while i >=1:
         edits = edits + [("delete",src[i-1],i-1)]
         i-=1
-    #print(edits)
+
     return dist, edits
 
 ################################################################################
