@@ -40,6 +40,7 @@ def prim(adjList, adjMat):
         # Get the next unvisited vertex and visit it.
         v = Q.deleteMin()
         v.visited = True
+        #print(v)
         # For each edge out of v.
         for neighbor in v.neigh:
             # If the edge leads out, update.
@@ -48,7 +49,10 @@ def prim(adjList, adjMat):
                 if neighbor.cost > weight:
                     neighbor.cost = weight
                     neighbor.prev = v
-    return
+    
+    #start.prev = neighbor#set loop
+    #### modified all vertices
+    return 
 
 ################################################################################
 
@@ -64,14 +68,15 @@ def kruskal(adjList, edgeList):
     for vertex in adjList:
         makeset(vertex)
     # Sort the edges by weight.
-    edgeList.sort()
+    #edgeList.sort()
     # Loop through the edges in increasing order.
     for e in edgeList:
         # If the min edge crosses a cut, add it to our MST.
         u, v = e.vertices
-        if find(u) != find(v):
+        if find(u) != find(v):##  how to use the isEqual method
             X.append(e)
             union(u,v)
+    # return the route list
     return X
 
 ################################################################################
@@ -101,7 +106,7 @@ Note: we will use path compression here.
 """
 def find(v):
     ##### Your implementation goes here. #####
-    while v != v.pi:
+    while not v.isEqual(v.pi):
         v=v.pi
     return v.pi
 
@@ -135,8 +140,34 @@ TSP
 def tsp(adjList, start):
     ##### Your implementation goes here. #####
     tour = []#
+    #print(type(start))
     #DFS basic
+    #initialize the MST
+        #if you build the tour list by appending the rank of each new vertex visited, you will not need the values prev
+    for vertex in adjList:
+        vertex.visited = False
     
+    start.visited = True
+    start.cost = 0
+    tour.append(start)
+    stack = [start]
+    while len(stack)!=0:
+        current = stack.pop() # pop from queus/stack
+        #print("current position",current)
+        #print("neighbor for current",current.neigh)
+        for neigh in current.mstN:
+            if neigh.visited is False:
+                neigh.visited = True
+                stack.append(neigh)
+                tour.append(neigh)
+                
+    tour.append(start)
+    
+    for i in range(len(tour)):
+        #change from vertex class to numbers
+        tour[i] = tour[i].rank
+        pass
+    #print(tour)
     #triangle inequality
     
     return tour
@@ -150,8 +181,8 @@ from p5tests import *
 Main function.
 """
 if __name__ == "__main__":
-    verb = False # Set to true for more printed info.
-    print('Testing Prim\n')
-    print(testMaps(prim, verb))
+    verb = True # Set to true for more printed info.
+    #print('Testing Prim\n')
+    #print(testMaps(prim, verb))
     print('\nTesting Kruskal\n')
     print(testMaps(kruskal, verb))
