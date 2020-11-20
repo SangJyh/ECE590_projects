@@ -3,9 +3,9 @@ Math 560
 Project 5
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1:Sang-Jyh Lin (sl605)
+Partner 2:Roderick Whang (rjw34)
+Date: 11/20/2020
 """
 
 # Import math, itertools, and time.
@@ -30,12 +30,12 @@ def prim(adjList, adjMat):
         v.prev = None
     # Pick an arbitrary start vertex and set cost to 0.
     rd = 0 #randomVertex() #need a function for random vertex  # or we chose the first element or last element
-    start =  adjList[rd]   
+    start =  adjList[rd]
     start.cost = 0
-    
+
     # Make the priority queue using cost for sorting.
     Q = PriorityQueue(adjList)
-    
+
     while not Q.isEmpty():
         # Get the next unvisited vertex and visit it.
         v = Q.deleteMin()
@@ -49,10 +49,10 @@ def prim(adjList, adjMat):
                 if neighbor.cost > weight:
                     neighbor.cost = weight
                     neighbor.prev = v
-    
+
     #start.prev = neighbor#set loop
     #### modified all vertices
-    return 
+    return
 
 ################################################################################
 
@@ -93,7 +93,7 @@ These functions will operate directly on the input vertex objects.
 """
 makeset: this function will create a singleton set with root v.
 """
-def makeset(v):
+def makeset(v): #create a singleton set containing vertex v
     ##### Your implementation goes here. #####
     v.pi = v #pi: the parent vertex in the disjoint set
     v.height =0 #height: the height in the disjoint set
@@ -104,7 +104,7 @@ find: this function will return the root of the set that contains v.
 Note: we will use path compression here.
 
 """
-def find(v):
+def find(v): #find which set vertex v belongs to
     ##### Your implementation goes here. #####
     while not v.isEqual(v.pi):
         v=v.pi
@@ -113,8 +113,9 @@ def find(v):
 """
 union: this function will union the sets of vertices v and u.
 """
-def union(u,v):
+def union(u,v): #merge the sets containing vertices u and v
     ##### Your implementation goes here. #####
+    #First, find the root of the tree for u and the tree for v
     ru = find(u)
     rv = find(v)
     # If the sets are already the same, return.
@@ -139,6 +140,7 @@ TSP
 """
 def tsp(adjList, start):
     ##### Your implementation goes here. #####
+    # Basically, we worked on DFS background as in Project #2
     tour = []#
     #print(type(start))
     #DFS basic
@@ -160,7 +162,7 @@ def tsp(adjList, start):
         for neigh in current.mstN:
             if neigh.visited is False:
                 neigh.visited = True
-                stack.append(neigh)
+                stack.append(neigh) # push
                 tour.append(neigh)
     
     #go back to finish the round trip
@@ -172,7 +174,7 @@ def tsp(adjList, start):
         pass
     #print(tour)
     #triangle inequality
-    
+
     return tour
 
 ################################################################################
