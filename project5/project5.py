@@ -93,7 +93,7 @@ These functions will operate directly on the input vertex objects.
 """
 makeset: this function will create a singleton set with root v.
 """
-def makeset(v):
+def makeset(v): #create a singleton set containing vertex v
     ##### Your implementation goes here. #####
     v.pi = v #pi: the parent vertex in the disjoint set
     v.height =0 #height: the height in the disjoint set
@@ -104,7 +104,7 @@ find: this function will return the root of the set that contains v.
 Note: we will use path compression here.
 
 """
-def find(v):
+def find(v): #find which set vertex v belongs to
     ##### Your implementation goes here. #####
     while not v.isEqual(v.pi):
         v=v.pi
@@ -113,8 +113,9 @@ def find(v):
 """
 union: this function will union the sets of vertices v and u.
 """
-def union(u,v):
+def union(u,v): #merge the sets containing vertices u and v
     ##### Your implementation goes here. #####
+    #First, find the root of the tree for u and the tree for v
     ru = find(u)
     rv = find(v)
     # If the sets are already the same, return.
@@ -139,11 +140,12 @@ TSP
 """
 def tsp(adjList, start):
     ##### Your implementation goes here. #####
+    # Basically, we worked on DFS background as in Project #2
     tour = []#
     #print(type(start))
     #DFS basic
     #initialize the MST
-        #if you build the tour list by appending the rank of each new vertex visited, you will not need the values prev
+    #if you build the tour list by appending the rank of each new vertex visited, you will not need the values prev
     for vertex in adjList:
         vertex.visited = False
 
@@ -158,7 +160,7 @@ def tsp(adjList, start):
         for neigh in current.mstN:
             if neigh.visited is False:
                 neigh.visited = True
-                stack.append(neigh)
+                stack.append(neigh) # push
                 tour.append(neigh)
 
     tour.append(start)
