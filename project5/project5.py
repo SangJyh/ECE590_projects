@@ -143,14 +143,16 @@ def tsp(adjList, start):
     #print(type(start))
     #DFS basic
     #initialize the MST
-        #if you build the tour list by appending the rank of each new vertex visited, you will not need the values prev
     for vertex in adjList:
         vertex.visited = False
-    
+
+    #initialize the "trip"
     start.visited = True
     start.cost = 0
     tour.append(start)
     stack = [start]
+    
+    #visit cities using DFS
     while len(stack)!=0:
         current = stack.pop() # pop from queus/stack
         #print("current position",current)
@@ -160,11 +162,12 @@ def tsp(adjList, start):
                 neigh.visited = True
                 stack.append(neigh)
                 tour.append(neigh)
-                
+    
+    #go back to finish the round trip
     tour.append(start)
     
+    #change from vertex class to numbers
     for i in range(len(tour)):
-        #change from vertex class to numbers
         tour[i] = tour[i].rank
         pass
     #print(tour)
@@ -181,7 +184,7 @@ from p5tests import *
 Main function.
 """
 if __name__ == "__main__":
-    verb = True # Set to true for more printed info.
+    verb = False # Set to true for more printed info.
     #print('Testing Prim\n')
     #print(testMaps(prim, verb))
     print('\nTesting Kruskal\n')
