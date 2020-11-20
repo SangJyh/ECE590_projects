@@ -141,7 +141,7 @@ TSP
 def tsp(adjList, start):
     ##### Your implementation goes here. #####
     # Basically, we worked on DFS background as in Project #2
-    tour = []#
+    tour = []# this is a place holder
     #print(type(start))
     #DFS basic
     #initialize the MST
@@ -151,30 +151,20 @@ def tsp(adjList, start):
     #initialize the "trip"
     start.visited = True
     start.cost = 0
-    tour.append(start)
-    stack = [start]
+    tour.append(start.rank) #tour to save the rank of vertices
+    stack = [start] #stack to push/pop vertices
     
     #visit cities using DFS
     while len(stack)!=0:
         current = stack.pop() # pop from queus/stack
-        #print("current position",current)
-        #print("neighbor for current",current.neigh)
         for neigh in current.mstN:
             if neigh.visited is False:
                 neigh.visited = True
                 stack.append(neigh) # push
-                tour.append(neigh)
+                tour.append(neigh.rank)
     
     #go back to finish the round trip
-    tour.append(start)
-    
-    #change from vertex class to numbers
-    for i in range(len(tour)):
-        tour[i] = tour[i].rank
-        pass
-    #print(tour)
-    #triangle inequality
-
+    tour.append(start.rank)
     return tour
 
 ################################################################################
