@@ -3,9 +3,9 @@ Math 560
 Project 5
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1:Sang-Jyh Lin (sl605)
+Partner 2:Roderick Whang (rjw34)
+Date: 11/20/2020
 """
 
 # Import math, itertools, and time.
@@ -30,12 +30,12 @@ def prim(adjList, adjMat):
         v.prev = None
     # Pick an arbitrary start vertex and set cost to 0.
     rd = 0 #randomVertex() #need a function for random vertex  # or we chose the first element or last element
-    start =  adjList[rd]   
+    start =  adjList[rd]
     start.cost = 0
-    
+
     # Make the priority queue using cost for sorting.
     Q = PriorityQueue(adjList)
-    
+
     while not Q.isEmpty():
         # Get the next unvisited vertex and visit it.
         v = Q.deleteMin()
@@ -49,10 +49,10 @@ def prim(adjList, adjMat):
                 if neighbor.cost > weight:
                     neighbor.cost = weight
                     neighbor.prev = v
-    
+
     #start.prev = neighbor#set loop
     #### modified all vertices
-    return 
+    return
 
 ################################################################################
 
@@ -146,7 +146,7 @@ def tsp(adjList, start):
         #if you build the tour list by appending the rank of each new vertex visited, you will not need the values prev
     for vertex in adjList:
         vertex.visited = False
-    
+
     start.visited = True
     start.cost = 0
     tour.append(start)
@@ -160,16 +160,16 @@ def tsp(adjList, start):
                 neigh.visited = True
                 stack.append(neigh)
                 tour.append(neigh)
-                
+
     tour.append(start)
-    
+
     for i in range(len(tour)):
         #change from vertex class to numbers
         tour[i] = tour[i].rank
         pass
     #print(tour)
     #triangle inequality
-    
+
     return tour
 
 ################################################################################
